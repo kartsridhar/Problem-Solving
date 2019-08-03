@@ -6,24 +6,22 @@ import random
 import re
 import sys
 
-def swap(arr, i, j):
-    temp = arr[i]
-    arr[i] = arr[j]
-    arr[j] = temp
-
 # Complete the minimumSwaps function below.
 def minimumSwaps(arr):
-    arrSort = sorted(arr)
-    indices = [None] * len(arr)
-    for i in range(len(arr)):
-        indices[i] = arrSort.index(arr[i])
-    
+    flag = [False] * len(arr)
     swapCount = 0
-    for j in range(len(arr)):
-        if j != indices[j]:
-            swap(indices, j, indices.index(j))
-            swapCount += 1
-        pass
+
+    for i in range(len(arr)):
+        j = i
+        rounds = 0
+
+        while (not flag[j]):
+            flag[j] = True
+            j = arr[j] - 1
+            rounds += 1
+
+        if rounds is not 0:
+            swapCount += rounds - 1
     return swapCount
 
 if __name__ == '__main__':
