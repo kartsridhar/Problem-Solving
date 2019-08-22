@@ -8,19 +8,21 @@ import sys
 
 # Complete the checkMagazine function below.
 def checkMagazine(magazine, note):
-    magazine = list(magazine)
-    note = list(note)
-    match = []
-    for i in note:
-        if i in magazine:
-            match.append(True)
-            magazine.remove(i)
-        else:
-            match.append(False)
-    if all(match):
+    magazine = sorted(list(magazine))
+    note = sorted(list(note))
+    i = 0
+    j = 0
+    match = 0
+    while i < len(note) and j < len(magazine):
+        if note[i] == magazine[j]:
+            match += 1
+            i += 1
+        j += 1
+    if match == len(note):
         print("Yes")
     else:
         print("No")
+    
 
 if __name__ == '__main__':
     mn = input().split()
