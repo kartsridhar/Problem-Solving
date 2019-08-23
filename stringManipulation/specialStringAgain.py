@@ -8,21 +8,19 @@ import sys
 
 # Complete the substrCount function below.
 def substrCount(n, s):
-    count = n
+    count = 0
     subs = []
     for i in range(n):
-        for j in range(i, n):
-            if s[i] == s[j]:
-                subs.append(s[i:j+1]) 
-    for k in range(len(subs)):
-        if len(subs[k]) == 1:
-            subs[k] = None
-    res = [i for i in subs if i] 
+        for j in range(1, n-i+1):
+            if s[i:i+j][0] == s[i:i+j][-1]:
+                subs.append(s[i:i+j])
+                count += 1
+    for x in range(len(subs)):
+        if not all(y == subs[x][0] for y in subs[x]) and subs[x].count(subs[x][0]) != len(subs[x]) - 1:
+            subs[x] = None
+    subs = [i for i in subs if i] 
+    return len(subs)
 
-    for r in res:
-        if r[0] == r[-1] and r.count(r[0]) == len(r) - 1:
-            count += 1
-    return count
 
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
