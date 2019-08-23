@@ -8,12 +8,20 @@ import sys
 #
 def timeConversion(s):
     zone = s[-2]+s[-1]
+    hour = s[:2]
+    x = int(hour)
+    time = ""
     if zone == 'PM':
-        hour = s[:2]
-        x = int(hour)
         if x < 12:
             x += 12
-    time = str(x) + s[2:8]
+            time = str(x) + s[2:8]
+        else:
+            time = s[:8]
+    elif zone == 'AM':
+        if x == 12:
+            time = "00" + s[2:8]
+        else:
+            time = s[:8]
     return time
 
 if __name__ == '__main__':
