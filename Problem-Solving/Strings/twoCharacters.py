@@ -9,7 +9,7 @@ from itertools import combinations
 
 # Complete the alternate function below.
 def alternate(s):
-    alpha = list(s)
+    alpha = set(s)
     longest = 0
     for i in combinations(alpha, 2):
         separator = ""
