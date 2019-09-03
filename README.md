@@ -6,4 +6,4 @@
 
 # Bloomberg CodeCon Challenger Series
 
-* Problems - **5/29** solved = 775 points
+* Problems - **6/29** solved = 900 points
