@@ -42,8 +42,9 @@ def getAllStars(s):
         if s[i] == '*':
             substrings.append(s[i+1:i+3] + '$')
     return substrings[::-1]
-        
-def removeAllStars(s):
+
+def decryptPassword(s):
+    # Write your code here
     substrings = getAllStars(s)
     starCount = 0
     s = replaceAllNumbers(s)
@@ -54,11 +55,6 @@ def removeAllStars(s):
             starCount += 1
     s_copy = s_copy.replace('$', '')
     return s_copy
-
-
-def decryptPassword(s):
-    # Write your code here
-    return removeAllStars(s)
 
 
 if __name__ == '__main__':
