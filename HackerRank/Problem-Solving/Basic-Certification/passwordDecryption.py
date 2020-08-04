@@ -48,8 +48,7 @@ def getAllStars(s):
     substrings = []         # list to store the substrings to replace the *s with
     for i in range(len(s)-1):
         if s[i] == '*':
-            substrings.append(s[i+1:i+3] + '$')     # since the string is reversed, store the respective slice delimited with a $ symbol
-                                                    # this is to ensure that the substring to replace the encryptions are of the same length
+            substrings.append(s[i+1:i+3])     # since the string is reversed, store the respective slice
     
     # Returning the substrings list reversed as we reversed the string initially
     return substrings[::-1]
@@ -65,9 +64,7 @@ def decryptPassword(s):
             # if a star is found, replace the previous 2 characters and the * with the respective substring
             s_copy = s_copy.replace(s_copy[i-2:i+1], substrings[starIndex])
             starIndex += 1
-    
-    # remove all the $ delimiters
-    s_copy = s_copy.replace('$', '')
+
     return s_copy
 
 
@@ -78,7 +75,7 @@ if __name__ == '__main__':
     s = '43Ah*ck0rr0nk'
 
     result = decryptPassword(s)
-    # print(result)
+    print(result)
 
     # fptr.write(result + '\n')
 
