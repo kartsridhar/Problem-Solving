@@ -8,11 +8,11 @@ import sys
 
 # Complete the minimumAbsoluteDifference function below.
 def minimumAbsoluteDifference(arr):
-    minVal = 99999
-    for i in range(len(arr)-1):
-        for j in range(i+1,len(arr)):
-            if abs(arr[i] - arr[j]) < minVal:
-                minVal = abs(arr[i] - arr[j])
+    minVal = 2*(10**9)
+    arr.sort()
+    for i in range(1,len(arr)):
+        if abs(arr[i] - arr[i-1]) <= minVal:
+            minVal = abs(arr[i] - arr[i-1])
     return minVal
 
 if __name__ == '__main__':
